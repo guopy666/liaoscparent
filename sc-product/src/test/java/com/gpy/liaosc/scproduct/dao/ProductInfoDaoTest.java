@@ -1,5 +1,6 @@
 package com.gpy.liaosc.scproduct.dao;
 
+import com.gpy.liaosc.scproduct.BaseTest;
 import com.gpy.liaosc.scproduct.entity.ProductInfo;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import java.util.List;
  * @Date: 2020/7/30 22:22
  * @version: v1.0.0
  */
-public class ProductInfoDaoTest extends BaseTest{
+public class ProductInfoDaoTest extends BaseTest {
 
     @Autowired
     private ProductInfoDao productInfoDao;

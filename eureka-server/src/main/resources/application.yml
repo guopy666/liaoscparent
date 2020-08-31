@@ -5,10 +5,10 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     register-with-eureka: false
   server:
-    ## Ö»ÔÚ¿ª·¢»·¾³¹Ø±Õ
+#    åªåœ¨å¼€å‘ç¯å¢ƒå…³é—­
     enable-self-preservation: false
 spring:
   application:
     name: eureka-server
-#server:
-#  port: 8761
+server:
+  port: 8761
