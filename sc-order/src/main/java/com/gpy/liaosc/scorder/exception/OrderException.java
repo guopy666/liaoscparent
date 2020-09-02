@@ -9,5 +9,4 @@ package com.gpy.liaosc.scorder.exception;
 public class OrderException {
 
 
-
 }

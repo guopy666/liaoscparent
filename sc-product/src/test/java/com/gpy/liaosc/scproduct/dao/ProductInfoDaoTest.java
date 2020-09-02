@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,4 +25,11 @@ public class ProductInfoDaoTest extends BaseTest {
         List<ProductInfo> infos = productInfoDao.findByProductStatus(0);
         Assert.assertTrue(infos.size()>0);
     }
+
+    @Test
+    public void findByProductIdIn(){
+        List<ProductInfo> productInfos = productInfoDao.findByProductIdIn(Arrays.asList("157875196366160022", "157875227953464068"));
+        Assert.assertTrue(productInfos.size() == 2);
+    }
+
 }

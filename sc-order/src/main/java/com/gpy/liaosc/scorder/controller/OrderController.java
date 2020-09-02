@@ -1,9 +1,11 @@
 package com.gpy.liaosc.scorder.controller;
 
+import com.gpy.liaosc.scorder.client.ProductClient;
 import com.gpy.liaosc.scorder.constant.ResultEnum;
 import com.gpy.liaosc.scorder.converter.OrderRq2OrderDtoConverter;
 import com.gpy.liaosc.scorder.dto.OrderDto;
 import com.gpy.liaosc.scorder.dto.OrderRq;
+import com.gpy.liaosc.scorder.entity.ProductInfo;
 import com.gpy.liaosc.scorder.exception.BusinessException;
 import com.gpy.liaosc.scorder.service.OrderService;
 import com.gpy.liaosc.scorder.utils.ResultVOUtils;
@@ -12,11 +14,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +36,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private ProductClient productClient;
 
     /**
      * @Description: 1 参数校验
@@ -63,5 +71,13 @@ public class OrderController {
         map.put("orderId", result.getOrderId());
         return ResultVOUtils.success(map);
     }
+
+    @GetMapping("/getProductList")
+    public List<ProductInfo> getProductList(){
+        List<ProductInfo> productInfos = productClient.listForOrder(Arrays.asList("164103465734242707"));
+        System.out.println(productInfos.get(0));
+        return productInfos;
+    }
+
 
 }

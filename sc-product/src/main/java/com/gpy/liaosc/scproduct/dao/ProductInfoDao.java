@@ -15,4 +15,6 @@ public interface ProductInfoDao extends JpaRepository<ProductInfo, String> {
 
     List<ProductInfo> findByProductStatus(Integer status);
 
+    List<ProductInfo> findByProductIdIn(List<String> productIdList);
+
 }

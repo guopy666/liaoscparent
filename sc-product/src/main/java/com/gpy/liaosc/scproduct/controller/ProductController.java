@@ -1,6 +1,7 @@
 package com.gpy.liaosc.scproduct.controller;
 
 import com.google.common.collect.Lists;
+import com.gpy.liaosc.scproduct.dto.CartDto;
 import com.gpy.liaosc.scproduct.entity.ProductCategory;
 import com.gpy.liaosc.scproduct.entity.ProductInfo;
 import com.gpy.liaosc.scproduct.service.CategoryService;
@@ -11,9 +12,7 @@ import com.gpy.liaosc.scproduct.vo.ProductVO;
 import com.gpy.liaosc.scproduct.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,6 +75,24 @@ public class ProductController  {
         }
 
         return ResultVOUtils.success(productVOs);
+    }
+
+    /**
+     * @Description  获取商品列表，for order service
+     * @Author guopy
+     * @Date 2020/9/2 21:42
+     * @param productIdList
+     * @Return java.util.List<com.gpy.liaosc.scproduct.entity.ProductInfo>
+     **/
+    @PostMapping("/listForOrder")
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList){
+
+        return productService.findListByIds(productIdList);
+    }
+
+    @PostMapping("/decreaseStock")
+    public void decreaseStock(@RequestBody List<CartDto> cartDtoList){
+        productService.decreaseStock(cartDtoList);
     }
 
 }

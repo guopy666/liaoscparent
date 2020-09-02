@@ -1,7 +1,7 @@
 package com.gpy.liaosc.scproduct.service;
 
+import com.gpy.liaosc.scproduct.dto.CartDto;
 import com.gpy.liaosc.scproduct.entity.ProductInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -21,4 +21,16 @@ public interface ProductService {
      * @author: guopy
      **/
     List<ProductInfo> findUpAll();
+
+    List<ProductInfo> findListByIds(List<String> productIds);
+
+    /**
+     * @Description  扣库存
+     * @Author guopy
+     * @Date 2020/9/2 22:25
+     * @param cartDtoList
+     * @Return void
+     **/
+    void decreaseStock(List<CartDto> cartDtoList);
+
 }

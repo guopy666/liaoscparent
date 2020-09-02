@@ -7,7 +7,6 @@ import com.gpy.liaosc.scorder.dto.OrderDto;
 import com.gpy.liaosc.scorder.dto.OrderRq;
 import com.gpy.liaosc.scorder.entity.OrderDetail;
 import com.gpy.liaosc.scorder.exception.BusinessException;
-import com.gpy.liaosc.scorder.exception.OrderException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;

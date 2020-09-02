@@ -2,7 +2,10 @@ package com.gpy.liaosc.scorder.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
@@ -44,8 +47,12 @@ public class OrderMaster {
     private Integer payStatus;
 
     /** 创建时间. */
+    @CreationTimestamp
+    @Column(insertable = false, updatable = false)
     private Date createTime;
 
     /** 更新时间. */
+    @UpdateTimestamp
+    @Column(insertable = false)
     private Date updateTime;
 }
